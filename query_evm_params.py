@@ -5,6 +5,9 @@ import timeit
 import sys
 
 
+# Define number of calls
+n_calls = 100
+
 # Setup binary to call local host
 os.system("evmosd config node http://localhost:26657")
 
@@ -20,5 +23,5 @@ def query_params():
         sys.exit("Call failed!")
 
 
-duration = timeit.timeit(query_params, number=100)
-print(f"Execution took: {duration} seconds")
+duration = timeit.timeit(query_params, number=n_calls)
+print(f"Execution took {duration / n_calls} seconds on average")
